@@ -24,7 +24,7 @@ export const userAsync = createAsyncThunk("user/fetchUsers", async (value) => {
   }
   if (value.value === "Employee") {
     filteredUser = response?.readEmployeeData?.filter((item) => {
-      console.log(item?.employeeType);
+      // console.log(item?.employeeType);
       if (item?.employeeType === "Employee") {
         return item;
       }

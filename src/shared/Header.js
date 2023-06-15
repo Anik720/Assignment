@@ -7,9 +7,10 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import { Button, Link } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { userAsync } from "../features/users/userSlice";
 import { useDispatch } from "react-redux";
+import { Carousel } from "@material-tailwind/react";
 // import MenuIcon from "@mui/icons-material/Menu";
 // import SearchIcon from "@mui/icons-material/Search";
 
@@ -56,7 +57,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Header() {
-  const dispatch = useDispatch();
+  // const location = useLocation(); // React Hook
+  // console.log(location.pathname);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -76,10 +78,18 @@ export default function Header() {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            MUI
+            <NavLink to="/">
+              <Button
+                variant="contained"
+                // onClick={() => {
+                //   dispatch(userAsync());
+                // }}
+              >
+                Home
+              </Button>
+            </NavLink>
           </Typography>
-
-          <NavLink to="/user">
+          <NavLink to="/admin">
             <Button
               variant="contained"
               // onClick={() => {
@@ -89,7 +99,7 @@ export default function Header() {
               Uers
             </Button>
           </NavLink>
-          <NavLink to="/user">
+          <NavLink to="/employee">
             <Button variant="contained">Employee</Button>
           </NavLink>
         </Toolbar>
